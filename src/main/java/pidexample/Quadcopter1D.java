@@ -115,22 +115,11 @@ public class Quadcopter1D implements FirstOrderDifferentialEquations, ChangeList
     /**
      * Calls the controller to generate the output based on the input.
      *
-     * @param deltaT the time that has passed
-     * @param z      the z-coordinate of the 1D-copter
-     * @param vZ     the velocity of the 1D-copter
+     * @param deltaT time since last update
+     * @param state the state vector, as used by the integrator, see {@link #computeDerivatives(double, double[], double[])}
      */
-    private void control(double deltaT, double z, double vZ) {
-        if (deltaT == 0) {
-            return;
-        }
-
-        double thrustUnclamped = controller.update(deltaT, z);
-
-        // Clamp to physical limits
-        thrust = FastMath.min(FastMath.max(thrustUnclamped, minThrust), maxThrust);
-        if (thrustUnclamped != thrust) {
-            System.out.println("Clamped thrust from " + thrustUnclamped + " to " + thrust);
-        }
+    private void control(double deltaT, double[] state) {
+        // TODO: Implement this method
     }
 
     @Override
@@ -163,11 +152,10 @@ public class Quadcopter1D implements FirstOrderDifferentialEquations, ChangeList
     @Override
     public void computeDerivatives(double t, double[] y, double[] yDot) throws MaxCountExceededException, DimensionMismatchException {
         // Invoke control loop
-        control(t - lastTime, y[0], y[1]);
+        control(t - lastTime, y);
         lastTime = t;
 
-        /*
-         */
+        // Compute updated derivatives
         yDot[0] = y[1];
         yDot[1] = thrust / mass - GRAVITY_CONST;
     }
