@@ -156,8 +156,7 @@ public class Quadcopter1D implements FirstOrderDifferentialEquations, ChangeList
         lastTime = t;
 
         // Compute updated derivatives
-        yDot[0] = y[1];
-        yDot[1] = thrust / mass - GRAVITY_CONST;
+        // TODO: Your code here
     }
 
     public void performSimulation() {
