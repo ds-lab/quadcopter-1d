@@ -6,9 +6,6 @@
 # Ignore Gradle GUI config
 gradle-app.setting
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
 # Cache of project
 .gradletasknamecache
 
@@ -155,3 +152,6 @@ local.properties
 .scala_dependencies
 .worksheet
 
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+# (keep at end to avoid the negative rule being overridden)
+!gradle-wrapper.jar
