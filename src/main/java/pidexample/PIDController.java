@@ -53,7 +53,7 @@ public class PIDController {
      * Change the output value by applying the moving average filter
      */
     private double filter(double output) {
-        throw new RuntimeException("update() -- not implemented");
+        throw new RuntimeException("filter() -- not implemented");
     }
 
     /**
